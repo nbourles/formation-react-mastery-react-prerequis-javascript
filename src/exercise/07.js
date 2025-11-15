@@ -33,19 +33,39 @@ const exercice = () => {
   // 🐶 Appelle cette Promise en asynchrone
   // 🤖 async function
   // 🤖 await calculNombrePair
-  async function fetchAsyncCalculNombrePair(number) {
-    const result = await calculNombrePair(number)
-    return `Nombre pair : ${result}`
+  // async function fetchAsyncCalculNombrePair(number) {
+  //   const result = await calculNombrePair(number)
+  //   return `Nombre pair : ${result}`
+  // }
+
+  // fetchAsyncCalculNombrePair(2).then(
+  //   (e) => console.log(e),
+  //   (err) => console.log(err)
+  // )
+
+  // fetchAsyncCalculNombrePair(3).then(
+  //   (e) => console.log(e),
+  //   (err) => console.log(err)
+  // )
+
+  async function simulationFetchAsyncCatch(number) {
+    let result
+    try {
+      result = await calculNombrePair(number, true)
+      return `Résultat OK : ${result}`
+    } catch (error) {
+      return `Résultat en erreur : ${error}`
+    }
   }
 
-  fetchAsyncCalculNombrePair(2).then(
+  simulationFetchAsyncCatch(2).then(
     (e) => console.log(e),
-    (err) => console.log(err)
+    (err) => console.error(err)
   )
 
-  fetchAsyncCalculNombrePair(3).then(
+  simulationFetchAsyncCatch(3).then(
     (e) => console.log(e),
-    (err) => console.log(err)
+    (err) => console.error(err)
   )
 }
 export default () => <App exercice={exercice} />
